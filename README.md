@@ -25,11 +25,12 @@ The intended use is as a Bash library to source in your own scripts.
 
 ## Contents
 
-### git-current-branch
+### git_branch_name
 
-Echoes the current branch
+Echoes the current branch name, or "HEAD" if not on a branch. (Alias to `git
+rev-parse --abbrev-ref HEAD`.)
 
-### git-merged-tags [branch]
+### git_merged_tags [branch]
 
 Lists tags that are reachable from the provided branch, or from the current
 branch if no argument is provided.

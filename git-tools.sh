@@ -7,3 +7,8 @@ function git_merged_tags {
       --merged                             \
       "${BRANCH}"
 }
+
+
+function git_branch_name {
+    git rev-parse --abbrev-ref HEAD
+}
