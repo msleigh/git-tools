@@ -27,6 +27,8 @@ The intended use is as a Bash library to source in your own scripts.
 
 ### git-current-branch
 
+Echoes the current branch
+
 ### git-merged-tags [branch]
 
 Lists tags that are reachable from the provided branch, or from the current
