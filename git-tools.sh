@@ -33,3 +33,24 @@ function git_type_of {
     fi
     return 0
 }
+
+
+function git_repo_path {
+    # Gives the path to the .git directory
+    # Works in a normal or bare Git repo or in a worktree
+    readlink -f "$(git rev-parse --git-common-dir)"
+}
+
+
+function git_repo_name {
+    # Gives the name of the repository
+    # Works in a normal or bare Git repo or in a worktree
+    # Don't use rev-parse --is-bare-repository as it returns false if inside
+    # worktree of a bare repository; we want true
+    if [[ $(git config core.bare) == "true" ]] ; then
+        basename "$(git_repo_path)" .git
+    else
+        GIT_REPO_PATH="$(git_repo_path)"
+        basename "${GIT_REPO_PATH%/.git}"
+    fi
+}
