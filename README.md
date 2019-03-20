@@ -4,6 +4,8 @@ A collection of handy Git functions.
 
 ## Installation
 
+### As a library
+
 The intended use is as a Bash library to source in your own scripts.
 
 1. Clone the repository somewhere
