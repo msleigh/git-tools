@@ -7,10 +7,10 @@ A collection of handy Git functions.
 The intended use is as a Bash library to source in your own scripts.
 
 1. Clone the repository somewhere
-```bash
-cd /path/to/destination
-git clone https://github.com/msleigh/git-tools.git
-```
+   ```bash
+   cd /path/to/destination
+   git clone https://github.com/msleigh/git-tools.git
+   ```
 1. Add the lines to the top of your script, after the shebang but before any
    other executable statement:
 
