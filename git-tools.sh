@@ -1,4 +1,10 @@
-function git_merged_tags {
+# Prefer:
+#     name () { function_body }
+# syntax over:
+#     function name { function_body }
+# syntax, as it gives consistent behaviour in both bash and ksh.
+
+git_merged_tags () {
     BRANCH="${1:-"HEAD"}"
     git tag                                \
       --sort='-refname'                    \
@@ -9,12 +15,12 @@ function git_merged_tags {
 }
 
 
-function git_branch_name {
+git_branch_name () {
     git rev-parse --abbrev-ref HEAD
 }
 
 
-function git_type_of {
+git_type_of () {
     REF="${1:-""}"
     if [[ -z ${REF} ]] ; then
         echo "Missing ref name" >&2
@@ -35,14 +41,14 @@ function git_type_of {
 }
 
 
-function git_repo_path {
+git_repo_path () {
     # Gives the path to the .git directory
     # Works in a normal or bare Git repo or in a worktree
     readlink -f "$(git rev-parse --git-common-dir)"
 }
 
 
-function git_repo_name {
+git_repo_name () {
     # Gives the name of the repository
     # Works in a normal or bare Git repo or in a worktree
     # Don't use rev-parse --is-bare-repository as it returns false if inside
