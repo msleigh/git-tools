@@ -5,6 +5,8 @@
 # syntax, as it gives consistent behaviour in both bash and ksh.
 
 git_merged_tags () {
+    # Lists tags that are reachable from the current HEAD or branch name
+    # provided, in a particular format
     BRANCH="${1:-"HEAD"}"
     git tag                                \
       --sort='-refname'                    \
@@ -16,11 +18,13 @@ git_merged_tags () {
 
 
 git_branch_name () {
+    # Echo the current branch name
     git rev-parse --abbrev-ref HEAD
 }
 
 
 git_type_of () {
+    # Say whether the provided ref is a branch, tag, remote branch or hash
     REF="${1:-""}"
     if [[ -z ${REF} ]] ; then
         echo "Missing ref name" >&2
@@ -42,14 +46,14 @@ git_type_of () {
 
 
 git_repo_path () {
-    # Gives the path to the .git directory
+    # Give the path to the .git directory
     # Works in a normal or bare Git repo or in a worktree
     readlink -f "$(git rev-parse --git-common-dir)"
 }
 
 
 git_repo_name () {
-    # Gives the name of the repository
+    # Give the name of the repository
     # Works in a normal or bare Git repo or in a worktree
     # Don't use rev-parse --is-bare-repository as it returns false if inside
     # worktree of a bare repository; we want true
