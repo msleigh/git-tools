@@ -64,3 +64,13 @@ git_repo_name () {
         basename "${GIT_REPO_PATH%/.git}"
     fi
 }
+
+ref_exists () {
+    # Verify that the ref exists
+    typeset REF="${1:-""}"
+    if [[ -z ${REF} ]] ; then
+        echo "Missing ref name" >&2
+        return 1
+    fi
+    git rev-parse --quiet --verify "${REF}" >/dev/null
+}
