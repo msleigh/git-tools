@@ -74,3 +74,12 @@ ref_exists () {
     fi
     git rev-parse --quiet --verify "${REF}" >/dev/null
 }
+
+git_push_dest () {
+    typeset BRANCH="${1:-}"
+    if [[ -z ${BRANCH} ]] ; then
+        echo "Missing branch name" >&2
+        return 1
+    fi
+    git rev-parse --quiet --verify --abbrev-ref "${BRANCH}@{push}"
+}
